@@ -18,7 +18,7 @@
  *
  */
 
-package com.sirius.hadoop.job.onlinetime;
+package com.sirius.hadoop.job;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;

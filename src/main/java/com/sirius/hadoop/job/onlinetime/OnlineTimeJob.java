@@ -38,10 +38,15 @@ import org.apache.hadoop.util.ToolRunner;
  */
 public class OnlineTimeJob extends Configured implements Tool {
 
-		private static final Path out = new Path("/subscriber_status_out");
+	public static final Path out = new Path("/subscriber_status_out");
 
 	@Override
 	public int run(String[] args) throws Exception {
+		return build().waitForCompletion(true) ? 0 : 1;
+	}
+
+	public Job build() throws Exception {
+		//init
 		Job job = Job.getInstance(getConf(), "onlinetime");
 		job.setJarByClass(OnlineTimeJob.class);
 
@@ -66,7 +71,8 @@ public class OnlineTimeJob extends Configured implements Tool {
 		FileOutputFormat.setOutputPath(job, out);
 		FileOutputFormat.setCompressOutput(job, true);
 		FileOutputFormat.setOutputCompressorClass(job, Lz4Codec.class);
-		return job.waitForCompletion(true) ? 0 : 1;
+
+		return job;
 	}
 
 	public static void main(String[] args) throws Exception {

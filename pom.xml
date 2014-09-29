@@ -6,7 +6,7 @@
 
     <groupId>com.sirius.hadoop</groupId>
     <artifactId>mr-template</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>2014-09-29</version>
 
     <licenses>
         <license>
